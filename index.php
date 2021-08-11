@@ -223,6 +223,16 @@ switch (ENVIRONMENT)
  *  Now that we know the path, set the main path constants
  * -------------------------------------------------------------------
  */
+
+	$protocol = (isset($_SERVER['HTTPS']) &&
+	            ($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) ||
+	            isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
+	            $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') ? 'https://' : 'http://';
+
+	$webdir   = (explode('/', ltrim($_SERVER['REQUEST_URI'], '/'))[0] == 'simasjid') ? 'simasjid' : NULL;
+
+	define('BASE_URL', $protocol . $_SERVER['HTTP_HOST'] . '/' . $webdir);
+	
 	// The name of THIS file
 	define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
 

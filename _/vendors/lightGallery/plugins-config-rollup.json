@@ -1,0 +1,62 @@
+[
+    {
+        "name": "thumbnail",
+        "folder": "plugins/thumbnail/",
+        "fileName": "lg-thumbnail"
+    },
+    {
+        "name": "video",
+        "folder": "plugins/video/",
+        "fileName": "lg-video"
+    },
+    {
+        "name": "zoom",
+        "folder": "plugins/zoom/",
+        "fileName": "lg-zoom"
+    },
+    {
+        "name": "share",
+        "folder": "plugins/share/",
+        "fileName": "lg-share"
+    },
+    {
+        "name": "rotate",
+        "folder": "plugins/rotate/",
+        "fileName": "lg-rotate"
+    },
+    {
+        "name": "pager",
+        "folder": "plugins/pager/",
+        "fileName": "lg-pager"
+    },
+    {
+        "name": "hash",
+        "folder": "plugins/hash/",
+        "fileName": "lg-hash"
+    },
+    {
+        "name": "fullscreen",
+        "folder": "plugins/fullscreen/",
+        "fileName": "lg-fullscreen"
+    },
+    {
+        "name": "comment",
+        "folder": "plugins/comment/",
+        "fileName": "lg-comment"
+    },
+    {
+        "name": "autoplay",
+        "folder": "plugins/autoplay/",
+        "fileName": "lg-autoplay"
+    },
+    {
+        "name": "mediumZoom",
+        "folder": "plugins/mediumZoom/",
+        "fileName": "lg-medium-zoom"
+    },
+    {
+        "name": "relativeCaption",
+        "folder": "plugins/relativeCaption/",
+        "fileName": "lg-relative-caption"
+    }
+]

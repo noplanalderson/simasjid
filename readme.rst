@@ -12,7 +12,7 @@ dengan modul audit yang bisa digunakan untuk mengaudit keuangan masjid jika dipe
 Informasi Rilis
 *******************
 
-Versi terbaru dari aplikasi SIMASJID adalah v1.4.1 yang bisa diunduh pada link 'Release' di halaman ini.
+Versi terbaru dari aplikasi SIMASJID adalah v1.4.2 yang bisa diunduh pada link 'Release' di halaman ini.
 
 **************************
 Fitur-fitur

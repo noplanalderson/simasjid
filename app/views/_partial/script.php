@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 		
 		<?= js('toaster') ?>
 
-		<?= empty($this->session->userdata('uid')) ? '' : js('app-dev') ?>
+		<?= empty($this->session->userdata('uid')) ? '' : js('app-prod.min') ?>
 
 		<?php $this->_CI->load_js() ?>
 

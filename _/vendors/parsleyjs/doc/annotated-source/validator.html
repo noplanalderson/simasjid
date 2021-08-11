@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>validator.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page"><a class="source" href="../index.html">&lt;&lt;&lt; back to documentation</a>
+            
+              
+              <a class="source" href="base.html">
+                base.js
+              </a>
+            
+              
+              <a class="source" href="constraint.html">
+                constraint.js
+              </a>
+            
+              
+              <a class="source" href="defaults.html">
+                defaults.js
+              </a>
+            
+              
+              <a class="source" href="factory.html">
+                factory.js
+              </a>
+            
+              
+              <a class="source" href="field.html">
+                field.js
+              </a>
+            
+              
+              <a class="source" href="form.html">
+                form.js
+              </a>
+            
+              
+              <a class="source" href="main.html">
+                main.js
+              </a>
+            
+              
+              <a class="source" href="multiple.html">
+                multiple.js
+              </a>
+            
+              
+              <a class="source" href="pubsub.html">
+                pubsub.js
+              </a>
+            
+              
+              <a class="source" href="remote.html">
+                remote.js
+              </a>
+            
+              
+              <a class="source" href="ui.html">
+                ui.js
+              </a>
+            
+              
+              <a class="source" href="utils.html">
+                utils.js
+              </a>
+            
+              
+              <a class="source" href="validator.html">
+                validator.js
+              </a>
+            
+              
+              <a class="source" href="validator_registry.html">
+                validator_registry.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>validator.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">import</span> $ <span class="hljs-keyword">from</span> <span class="hljs-string">'jquery'</span>;
+<span class="hljs-keyword">import</span> Utils <span class="hljs-keyword">from</span> <span class="hljs-string">'./utils'</span>;
+
+<span class="hljs-keyword">var</span> convertArrayRequirement = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">string, length</span>) </span>{
+  <span class="hljs-keyword">var</span> m = string.match(<span class="hljs-regexp">/^\s*\[(.*)\]\s*$/</span>);
+  <span class="hljs-keyword">if</span> (!m)
+    <span class="hljs-keyword">throw</span> <span class="hljs-string">'Requirement is not an array: "'</span> + string + <span class="hljs-string">'"'</span>;
+  <span class="hljs-keyword">var</span> values = m[<span class="hljs-number">1</span>].split(<span class="hljs-string">','</span>).map(Utils.trimString);
+  <span class="hljs-keyword">if</span> (values.length !== length)
+    <span class="hljs-keyword">throw</span> <span class="hljs-string">'Requirement has '</span> + values.length + <span class="hljs-string">' values when '</span> + length + <span class="hljs-string">' are needed'</span>;
+  <span class="hljs-keyword">return</span> values;
+};
+
+<span class="hljs-keyword">var</span> convertExtraOptionRequirement = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">requirementSpec, string, extraOptionReader</span>) </span>{
+  <span class="hljs-keyword">var</span> main = <span class="hljs-literal">null</span>;
+  <span class="hljs-keyword">var</span> extra = {};
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> key <span class="hljs-keyword">in</span> requirementSpec) {
+    <span class="hljs-keyword">if</span> (key) {
+      <span class="hljs-keyword">var</span> value = extraOptionReader(key);
+      <span class="hljs-keyword">if</span> (<span class="hljs-string">'string'</span> === <span class="hljs-keyword">typeof</span> value)
+        value = Utils.parseRequirement(requirementSpec[key], value);
+      extra[key] = value;
+    } <span class="hljs-keyword">else</span> {
+      main = Utils.parseRequirement(requirementSpec[key], string);
+    }
+  }
+  <span class="hljs-keyword">return</span> [main, extra];
+};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>A Validator needs to implement the methods <code>validate</code> and <code>parseRequirements</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+<span class="hljs-keyword">var</span> Validator = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">spec</span>) </span>{
+  $.extend(<span class="hljs-literal">true</span>, <span class="hljs-keyword">this</span>, spec);
+};
+
+Validator.prototype = {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Returns <code>true</code> iff the given <code>value</code> is valid according the given requirements.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  validate: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value, requirementFirstArg</span>) </span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.fn) { <span class="hljs-comment">// Legacy style validator</span>
+
+      <span class="hljs-keyword">if</span> (<span class="hljs-built_in">arguments</span>.length &gt; <span class="hljs-number">3</span>)  <span class="hljs-comment">// If more args then value, requirement, instance...</span>
+        requirementFirstArg = [].slice.call(<span class="hljs-built_in">arguments</span>, <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>);  <span class="hljs-comment">// Skip first arg (value) and last (instance), combining the rest</span>
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.fn(value, requirementFirstArg);
+    }
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Array</span>.isArray(value)) {
+      <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.validateMultiple)
+        <span class="hljs-keyword">throw</span> <span class="hljs-string">'Validator `'</span> + <span class="hljs-keyword">this</span>.name + <span class="hljs-string">'` does not handle multiple values'</span>;
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.validateMultiple(...arguments);
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">let</span> instance = <span class="hljs-built_in">arguments</span>[<span class="hljs-built_in">arguments</span>.length - <span class="hljs-number">1</span>];
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.validateDate &amp;&amp; instance._isDateInput()) {
+        <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>] = Utils.parse.date(<span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>]);
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>] === <span class="hljs-literal">null</span>)
+          <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.validateDate(...arguments);
+      }
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.validateNumber) {
+        <span class="hljs-keyword">if</span> (!value) <span class="hljs-comment">// Builtin validators all accept empty strings, except `required` of course</span>
+          <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isNaN</span>(value))
+          <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>] = <span class="hljs-built_in">parseFloat</span>(<span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>]);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.validateNumber(...arguments);
+      }
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.validateString) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.validateString(...arguments);
+      }
+      <span class="hljs-keyword">throw</span> <span class="hljs-string">'Validator `'</span> + <span class="hljs-keyword">this</span>.name + <span class="hljs-string">'` only handles multiple values'</span>;
+    }
+  },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Parses <code>requirements</code> into an array of arguments,
+according to <code>this.requirementType</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  parseRequirements: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">requirements, extraOptionReader</span>) </span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-string">'string'</span> !== <span class="hljs-keyword">typeof</span> requirements) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Assume requirement already parsed
+but make sure we return an array</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">return</span> <span class="hljs-built_in">Array</span>.isArray(requirements) ? requirements : [requirements];
+    }
+    <span class="hljs-keyword">var</span> type = <span class="hljs-keyword">this</span>.requirementType;
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Array</span>.isArray(type)) {
+      <span class="hljs-keyword">var</span> values = convertArrayRequirement(requirements, type.length);
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; values.length; i++)
+        values[i] = Utils.parseRequirement(type[i], values[i]);
+      <span class="hljs-keyword">return</span> values;
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ($.isPlainObject(type)) {
+      <span class="hljs-keyword">return</span> convertExtraOptionRequirement(type, requirements, extraOptionReader);
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">return</span> [Utils.parseRequirement(type, requirements)];
+    }
+  },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Defaults:</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  requirementType: <span class="hljs-string">'string'</span>,
+
+  <span class="hljs-attr">priority</span>: <span class="hljs-number">2</span>
+
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Validator;</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+<script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-37229467-1"]);_gaq.push(["_trackPageview"]);(function(){var e=document.createElement("script");e.type="text/javascript";e.async=true;e.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();</script></body>
+</html>

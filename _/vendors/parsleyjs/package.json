@@ -1,0 +1,70 @@
+{
+  "name": "parsleyjs",
+  "version": "2.9.2",
+  "homepage": "http://parsleyjs.org",
+  "license": "MIT",
+  "description": "Validate your forms, frontend, without writing a single line of javascript!",
+  "main": "dist/parsley.js",
+  "scripts": {
+    "test": "gulp",
+    "test-browser": "gulp test-browser",
+    "build": "gulp build",
+    "coverage": "gulp coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guillaumepotier/Parsley.js.git"
+  },
+  "keywords": [
+    "parsley",
+    "form",
+    "validation",
+    "html5",
+    "polyfill",
+    "es6"
+  ],
+  "author": {
+    "name": "Guillaume Potier",
+    "email": "guillaume@wisembly.com",
+    "url": "http://guillaumepotier.com/"
+  },
+  "bugs": {
+    "url": "https://github.com/guillaumepotier/Parsley.js/issues"
+  },
+  "dependencies": {
+    "jquery": ">=1.8.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-transform-object-assign": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "del": "^1.1.1",
+    "docco": "~0.6.3",
+    "expect.js": "*",
+    "glob": "^5.0.14",
+    "gulp": "~4.0.0",
+    "gulp-cli": "^2.0.0",
+    "gulp-eslint": "*",
+    "gulp-git": "*",
+    "gulp-load-plugins": "^0.10.0",
+    "gulp-mocha": "*",
+    "gulp-replace": "*",
+    "inputevent": "*",
+    "jsdom": "^9.2",
+    "mocha": "*",
+    "moment": "*",
+    "rollup": "*",
+    "rollup-plugin-babel": "*",
+    "rollup-plugin-replace": "*",
+    "rollup-plugin-uglify": "*",
+    "sinon": "^1.12.2"
+  },
+  "jspm": {
+    "main": "dist/parsley.js",
+    "dependencies": {
+      "jquery": "npm:jquery"
+    }
+  }
+}

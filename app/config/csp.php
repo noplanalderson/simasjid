@@ -184,14 +184,14 @@ $config['default']['default_src'] = array(
 |
 */
 $config['scripting']['script_src'] 	= array(
-	'source'=> ["https://localhost/simasjid/_/", "https://unpkg.com/sweetalert2@7.24.1/"],
+	'source'=> [BASE_URL."/_/", "https://unpkg.com/sweetalert2@7.24.1/"],
 	'mode' 	=> ["'unsafe-eval'", "'unsafe-inline'", "'report-sample'"],
 	'hash' 	=> [],
 	'nonce' => "'nonce-".NONCE."'"
 );
 
 $config['scripting']['style_src'] 	= array(
-	'source'=> ["https://localhost/simasjid/_/", "https://fonts.googleapis.com/css", "https://unpkg.com/sweetalert2@7.24.1/"],
+	'source'=> [BASE_URL."/_/", "https://fonts.googleapis.com/css", "https://unpkg.com/sweetalert2@7.24.1/"],
 	'mode' 	=> ["'unsafe-inline'", "'report-sample'"],
 	'hash' 	=> [],
 	'nonce' => NULL
@@ -330,7 +330,7 @@ $config['frame']['frame_ancestors'] = array(
 $config['content']['img_src'] 	= array(
 	'source'=> [
 		"data:",
-		"https://localhost/simasjid/_/",
+		BASE_URL."/_/",
 		"https://www.gstatic.com/images/",
 		"https://images.unsplash.com"
 	],
@@ -338,8 +338,8 @@ $config['content']['img_src'] 	= array(
 
 $config['content']['font_src'] 	= array(
 	'source'=> [
-		"https://localhost/simasjid/_/fonts/",
-		"https://localhost/simasjid/_/vendors/",
+		BASE_URL."/_/fonts/",
+		BASE_URL."/_/vendors/",
 		"https://fonts.gstatic.com/s/nunito/",
 		"data:"
 	],

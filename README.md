@@ -44,7 +44,7 @@ Server Requirements
 - Apache atau Nginx Webserver
 - Database MariaDB versi 10.x
 - atau bisa menggunakan XAMPP pada Sistem Operasi Windows
-- Email sebagai SMTP  (Silakan baca panduan `berikut <https://www.dewaweb.com/blog/cara-setting-smtp-gmail/>`_)
+- Email sebagai SMTP  (Silakan baca panduan [berikut](https://www.dewaweb.com/blog/cara-setting-smtp-gmail/)
 
 ************
 Instalasi
@@ -60,4 +60,4 @@ Instalasi
 Lain-lain
 *********
 
-Laporkan celah keamanan atau bug ke email `berikut <mailto:mrnaeem@tutanota.com>`_
+Laporkan celah keamanan atau bug ke email [berikut](mailto:mrnaeem@tutanota.com>)

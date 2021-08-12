@@ -50,7 +50,7 @@ Instalasi
 ************
 
 - Buat database pada MariaDB atau jika anda menggunakan XAMPP, gunakan phpmyadmin.
-- Simpan folder aplikasi SIMASJID pada root directory webserver anda. Jika menggunakan XAMPP, letakkan folder aplikasi pada C:\\\xampp\\htdocs
+- Simpan folder aplikasi SIMASJID pada root directory webserver anda. Jika menggunakan XAMPP, letakkan folder aplikasi pada C:\\\\xampp\\htdocs
 - Akses http://domain/install.php atau jika masih menggunakan webserver lokal seperti XAMPP, silakan akses http://localhost/simasjid
 - Masukkan nama database, user database, dan password database
 - Ikuti langkah-langkah selanjutnya

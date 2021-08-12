@@ -229,7 +229,7 @@ switch (ENVIRONMENT)
 	            isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
 	            $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') ? 'https://' : 'http://';
 
-	$webdir   = (explode('/', ltrim($_SERVER['REQUEST_URI'], '/'))[0] == 'simasjid') ? 'simasjid' : NULL;
+	$webdir   = (explode('/', ltrim($_SERVER['REQUEST_URI'], '/'))[0] == 'simasjid-main') ? 'simasjid-main' : NULL;
 
 	define('BASE_URL', $protocol . $_SERVER['HTTP_HOST'] . '/' . $webdir);
 	

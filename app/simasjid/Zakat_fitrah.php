@@ -265,7 +265,7 @@ class Zakat_fitrah extends SIMASJID_Core {
 		
 		if ($this->form_validation->run() == TRUE) 
 		{
-			$kode_transaksi = strtoupper(random_char(10));
+			$kode_transaksi = strtoupper(random_char(5)).time();
 
 			$data = array(
 				'kode_transaksi' => $kode_transaksi,

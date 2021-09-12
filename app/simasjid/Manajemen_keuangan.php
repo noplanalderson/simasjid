@@ -259,7 +259,7 @@ class Manajemen_keuangan extends SIMASJID_Core {
 				$dokumentasi = $this->secure_upload->data();
 
 				$data = array(
-					'kode_transaksi' => strtoupper(random_char(10)),
+					'kode_transaksi' => strtoupper(random_char(5)).time(),
 					'id_kategori' => $post['id_kategori'],
 					'user_id' => $this->session->userdata('uid'),
 					'keterangan' => $post['keterangan'],
@@ -357,7 +357,7 @@ class Manajemen_keuangan extends SIMASJID_Core {
 				$dokumentasi = $this->secure_upload->data();
 
 				$data = array(
-					'kode_transaksi' => strtoupper(random_char(10)),
+					'kode_transaksi' => strtoupper(random_char(5)).time(),
 					'id_kategori' => $post['id_kategori'],
 					'user_id' => $this->session->userdata('uid'),
 					'keterangan' => $post['keterangan'],

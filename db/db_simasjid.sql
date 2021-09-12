@@ -44,7 +44,7 @@ CREATE TABLE `tb_dokumentasi` (
 
 CREATE TABLE `tb_inventaris` (
   `id_barang` int(11) NOT NULL,
-  `kode_barang` char(10) NOT NULL,
+  `kode_barang` char(15) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `tgl_pendataan` date DEFAULT current_timestamp(),
   `nama_barang` varchar(255) NOT NULL,
@@ -118,7 +118,7 @@ INSERT INTO `tb_jenis_kegiatan` (`id_jenis`, `jenis_kegiatan`) VALUES
 
 CREATE TABLE `tb_kas_masjid` (
   `id_transaksi` int(11) NOT NULL,
-  `kode_transaksi` char(10) NOT NULL,
+  `kode_transaksi` char(15) NOT NULL,
   `id_kategori` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `keterangan` varchar(255) NOT NULL,
@@ -189,7 +189,7 @@ CREATE TABLE `tb_log_inventaris` (
   `log_id` int(11) NOT NULL,
   `aksi` enum('Tambah','Update','Hapus') NOT NULL,
   `timestamp` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `kode_barang` char(10) NOT NULL,
+  `kode_barang` char(15) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `nama_barang` varchar(255) NOT NULL,
   `kuantitas_masuk` float DEFAULT NULL,
@@ -208,7 +208,7 @@ CREATE TABLE `tb_log_kas` (
   `log_id` int(11) NOT NULL,
   `aksi` enum('Tambah','Update','Hapus') NOT NULL,
   `timestamp` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `kode_transaksi` char(10) NOT NULL,
+  `kode_transaksi` char(15) NOT NULL,
   `id_kategori` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `date` date NOT NULL,
@@ -227,7 +227,7 @@ CREATE TABLE `tb_log_zakat_fitrah` (
   `log_id` int(11) NOT NULL,
   `aksi` enum('Tambah','Update','Hapus') NOT NULL,
   `timestamp` timestamp NULL DEFAULT current_timestamp(),
-  `kode_transaksi` char(10) NOT NULL,
+  `kode_transaksi` char(15) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `status` enum('masuk','keluar') NOT NULL,
   `date` date NOT NULL,
@@ -248,7 +248,7 @@ CREATE TABLE `tb_log_zakat_mal` (
   `log_id` int(11) NOT NULL,
   `aksi` enum('Tambah','Update','Hapus') NOT NULL,
   `timestamp` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `kode_transaksi` char(10) NOT NULL,
+  `kode_transaksi` char(15) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `status` enum('masuk','keluar') NOT NULL,
   `date` date NOT NULL,
@@ -591,7 +591,7 @@ INSERT INTO `tb_user_type` (`type_id`, `type_name`, `index_page`) VALUES
 
 CREATE TABLE `tb_zakat_fitrah` (
   `id_transaksi` int(11) NOT NULL,
-  `kode_transaksi` char(10) NOT NULL,
+  `kode_transaksi` char(15) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `date` date NOT NULL,
   `status` enum('masuk','keluar') NOT NULL,
@@ -624,7 +624,7 @@ VALUES('Update', NOW(), NEW .kode_transaksi, NEW .user_id, NEW .status, NEW .dat
 
 CREATE TABLE `tb_zakat_mal` (
   `id_transaksi` int(11) NOT NULL,
-  `kode_transaksi` char(10) NOT NULL,
+  `kode_transaksi` char(15) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `date` date NOT NULL,
   `status` enum('masuk','keluar') NOT NULL,

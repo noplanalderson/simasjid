@@ -292,7 +292,7 @@ class Inventarisasi extends SIMASJID_Core {
 				// Get Image(s) Data
 				$dokumentasi = $this->secure_upload->data();
 
-				$kode = strtoupper(random_char(10));
+				$kode = strtoupper(random_char(5)).time();
 
 				$data = array(
 					'kode_barang' => $kode,
@@ -405,10 +405,10 @@ class Inventarisasi extends SIMASJID_Core {
 				// Get Image(s) Data
 				$dokumentasi = $this->secure_upload->data();
 
-				$kode = strtoupper(random_char(10));
+				$kode = strtoupper(random_char(5)).time();
 
 				$data = array(
-					'kode_barang' => strtoupper(random_char(10)),
+					'kode_barang' => $kode,
 					'nama_barang' => ucwords($post['nama_barang']),
 					'user_id' => $this->session->userdata('uid'),
 					'keterangan' => $post['keterangan'],
@@ -540,7 +540,7 @@ class Inventarisasi extends SIMASJID_Core {
 				$this->form_validation->set_rules(
 						'kode_barang',
 						'Kode Barang',
-						'trim|regex_match[/[a-zA-Z0-9]+$/]|required|exact_length[10]',
+						'trim|regex_match[/[a-zA-Z0-9]+$/]|required|exact_length[15]',
 						[
 							'required' => '{field} wajib diisi.',
 							'exact_length' => '{field} harus 10 huruf.',

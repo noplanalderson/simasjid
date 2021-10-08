@@ -29,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 
 		<?= plugin('select2/select2.min');?>
 
-		<link href="https://unpkg.com/sweetalert2@7.24.1/dist/sweetalert2.css" rel="stylesheet">
+		<?= plugin('sweetalert2/dist/sweetalert2.min');?>
 
 		<?= css('app-prod.min') ?>
 

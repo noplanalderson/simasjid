@@ -311,7 +311,7 @@ else
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SASUKE - Instalasi</title>
+    <title>SIMASJID - Instalasi</title>
 
     <link rel="icon" href="_/images/mosque-icon.png">
 

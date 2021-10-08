@@ -229,9 +229,12 @@ switch (ENVIRONMENT)
 	            isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
 	            $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') ? 'https://' : 'http://';
 
-	$webdir   = (explode('/', ltrim($_SERVER['REQUEST_URI'], '/'))[0] == 'simasjid-main') ? 'simasjid-main' : NULL;
+	// Konfigurasi web direktori
+	// Jika anda menggunakan xampp, sesuaikan isi variabel webdir dengan nama direktori aplikasi simasjid anda
+	// Jika anda mengarahkan webroot ke aplikasi ini, maka kosongkan variabel ini.
+	$webdir   = '';
 
-	define('BASE_URL', $protocol . $_SERVER['HTTP_HOST'] . '/' . $webdir);
+	define('BASE_URL', $protocol . $_SERVER['SERVER_NAME'] . '/' . $webdir);
 	
 	// The name of THIS file
 	define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));

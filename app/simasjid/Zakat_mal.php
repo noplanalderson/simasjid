@@ -240,6 +240,8 @@ class Zakat_mal extends SIMASJID_Core {
 
 	private function _createQRCode($kode_transaksi)
 	{
+		if (!is_dir(FCPATH . '_/uploads/qrcode/')) mkdir(FCPATH . '_/uploads/qrcode/', 0755, true);
+		
 		$this->load->library('ciqrcode');
 		
 		$params['data'] 	= base64url_encode(encrypt($kode_transaksi));

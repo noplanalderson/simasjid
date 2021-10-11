@@ -6,6 +6,7 @@
             smtp_user : $('#smtp_user').val(),
             smtp_port : $('#smtp_port').val(),
             smtp_password : $('#smtp_password').val(),
+            smtp_crypto : $('#mode_enkripsi').val(),
             simasjid_token : $('.csrf_token').val()
         };
 

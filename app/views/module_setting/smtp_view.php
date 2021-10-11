@@ -29,10 +29,19 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                   </select>
                                 </div>
                               </div>
-                              <div class="col-8">
+                              <div class="col-4">
                                 <div class="form-group">
                                   <label for="smtp_host">SMTP Host *</label>
                                   <input type="text" id="smtp_host" name="smtp_host" placeholder="smtp.domain.com" class="form-control" value="<?= $smtp['smtp_host'] ?>" required="required" />
+                                </div>
+                              </div>
+                              <div class="col-4">
+                                <div class="form-group">
+                                  <label for="mode_enkripsi">Mode Enkripsi *</label>
+                                  <select name="mode_enkripsi" id="mode_enkripsi" class="form-control text-white" required="required">
+                                      <option value="tls" <?php if($smtp['smtp_crypto'] == 'tls') :?>selected="selected"<?php endif;?>>TLS</option>
+                                      <option value="ssl" <?php if($smtp['smtp_crypto'] == 'ssl') :?>selected="selected"<?php endif;?>>SSL</option>
+                                  </select>
                                 </div>
                               </div>
                             </div>

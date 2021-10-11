@@ -72,9 +72,17 @@ class Manajemen_user extends SIMASJID_Core {
 		{	
 			if($this->user_m->checkUser($post['user_name'], $post['user_email'], 'tambah') == 0)
 			{
+				$pwd = passwordHash($post['user_password'], 
+					[
+						'memory_cost' => 2048, 
+						'time_cost' => 4, 
+						'threads' => 1
+					]
+				);
+
 				$userSetting = array(
 					'user_name' => $post['user_name'],
-					'user_password' => '',
+					'user_password' => $pwd,
 					'real_name' => ucwords($post['real_name']),
 					'user_email' => strtolower($post['user_email']),
 					'id_jabatan' => $post['id_jabatan'],
@@ -102,12 +110,12 @@ class Manajemen_user extends SIMASJID_Core {
 					$this->email->to($userSetting['user_email']);
 					
 					$this->email->subject('SIMASJID - Aktivasi Akun');
-					$this->email->message("Email anda telah terdaftar pada Aplikasi SIMASJID. Silakan aktivasi akun anda dengan mengunjungi tautan berikut.\n\n" . base_url('aktivasi/'.$userSetting['user_token']));
+					$this->email->message("Email anda telah terdaftar pada Aplikasi SIMASJID " . $this->app->nama_masjid);
 					
-					$this->email->send();
+					$emailMsg = (!$this->email->send()) ? 'Gagal mengirim email.' : '';
 				}
 
-				$msg = ($status === 1) ? 'User berhasil ditambahkan.' : 'User gagal ditambahkan.';
+				$msg = ($status === 1) ? 'User berhasil ditambahkan.<br/>'.$emailMsg : 'User gagal ditambahkan.';
 			}
 			else
 			{
@@ -184,6 +192,23 @@ class Manajemen_user extends SIMASJID_Core {
 				'errors'=> [
 					'regex_match' => '{field} harus bernilai TRUE atau FALSE.'
 				]
+			),
+			array(
+				'field' => 'user_password',
+		        'label' => 'Password',
+		        'rules' => 'regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,16}$/]|required',
+		        'errors'=> array('required' => '{field} required',
+                    'regex_match' => '{field} harus terdiri dari Uppercase, Lowercase, Numerik, dan Simbol 8-16 karakter.'
+                )
+			),
+			array(
+				'field' => 'repeat_password',
+		        'label' => 'Repeat Password',
+		        'rules' => 'required|matches[user_password]',
+		        'errors'=> array(
+		        	'required' => '{field} required',
+                    'matches' => '{field} tidak cocok.'
+                )
 			)
 		);
 
@@ -212,11 +237,19 @@ class Manajemen_user extends SIMASJID_Core {
 				{	
 					if($this->user_m->checkUser($post['user_name'], $post['user_email'], 'edit', $post['id_user']) == 0)
 					{
+						$pwd = passwordHash($post['user_password'], 
+							[
+								'memory_cost' => 2048, 
+								'time_cost' => 4, 
+								'threads' => 1
+							]
+						);
 
 						$userSetting = array(
 							'user_name' => $post['user_name'],
 							'real_name' => ucwords($post['real_name']),
 							'user_email' => strtolower($post['user_email']),
+							'user_password' => $pwd,
 							'id_jabatan' => $post['id_jabatan'],
 							'is_active' => $post['is_active']
 						);

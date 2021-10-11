@@ -84,6 +84,38 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                       <small class="text-danger">Hanya Huruf, titik, koma, dan Spasi</small>
                   </div>
               </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="user_password my-2">Kata Sandi *</label>
+                    <div class="input-group">
+                        <input id="user_password" 
+                            type="password" 
+                            class="form-control" 
+                            placeholder="********"
+                            name="user_password" 
+                            pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[.!@$%?/~_]).{8,32}$"
+                            required="required" autocomplete="off">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text show-btn-password"><i class="fa fa-eye password"></i></span>
+                        </div>
+                    </div>
+                    <small class="text-danger">Kata sandi harus mengandung huruf besar, kecil, angka, dan simbol minimal 8 karakter.</small>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="user_password my-2">Ulangi Kata Sandi *</label>
+                    <div class="input-group">
+                        <input id="repeat_password" type="password" class="form-control" placeholder="********" name="repeat_password" autocomplete="off">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text show-btn-repeat"><i class="fa fa-eye repeat"></i></span>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div class="row mt-1">
                   <div class="col-md-6">
                       <div class="form-group">

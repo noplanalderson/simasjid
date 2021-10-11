@@ -1,3 +1,33 @@
+$(".show-btn-password").click(function() {
+  var showBtn = $('.show-btn-password');
+  var formPassword = $('#user_password').attr('type');
+
+  if(formPassword === "password"){
+      showBtn.attr('class', 'input-group-text show-btn-password d-flex hide-btn');
+      $('.password').attr('class', 'fa fa-eye-slash password');
+      $('#user_password').attr('type', 'text');
+    }else{
+      $('.password').attr('class', 'fa fa-eye password');
+      $('#user_password').attr('type', 'password');
+      showBtn.attr('class', 'input-group-text show-btn-password d-flex');
+    }
+});
+
+$(".show-btn-repeat").click(function() {
+  var showBtn = $('.show-btn-repeat');
+  var formPassword = $('#repeat_password').attr('type');
+
+  if(formPassword === "password"){
+      showBtn.attr('class', 'input-group-text show-btn-repeat d-flex hide-btn');
+      $('.repeat').attr('class', 'fa fa-eye-slash repeat');
+      $('#repeat_password').attr('type', 'text');
+    }else{
+      $('#repeat_password').attr('type', 'password');
+      $('.repeat').attr('class', 'fa fa-eye repeat');
+      showBtn.attr('class', 'input-group-text show-btn-repeat d-flex');
+    }
+});
+
     $(document).ready(function(){
         'use strict';
 
@@ -24,7 +54,7 @@
         	$('.modal-title').html('Tambah User');
             $('.modal-footer button[type=submit]').html('Tambah');
             $('.modal-body form').attr('action', baseURI + '/tambah-user');
-            $('#is_active_box').attr('class', 'col-md-6 d-none');
+            // $('#is_active_box').attr('class', 'col-md-6 d-none');
             
             $('#id_user').val('');
             $('#user_name').val('');
@@ -36,7 +66,7 @@
             $('.modal-title').html('Edit User');
             $('.modal-footer button[type=submit]').html('Edit User');
             $('.modal-body form').attr('action', baseURI + '/edit-user');
-            $('#is_active_box').attr('class', 'col-md-6');
+            // $('#is_active_box').attr('class', 'col-md-6');
 
             const id_user = $(this).data('id');
             $.ajax({
@@ -132,6 +162,8 @@
             user_email : $('#user_email').val(),
             real_name : $('#real_name').val(),
             id_jabatan : $('#id_jabatan').val(),
+            user_password : $('#user_password').val(),
+            repeat_password : $('#repeat_password').val(),
             is_active : ($('#is_active').is(":checked")) ? '1' : '0',
             simasjid_token : $('.csrf_token').val()
         };

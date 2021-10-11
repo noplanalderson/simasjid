@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
     
     <?php $this->_CI->load_css_plugin() ?>
 
-    <link href="https://unpkg.com/sweetalert2@7.24.1/dist/sweetalert2.css" rel="stylesheet">
+    <?= plugin('sweetalert2/dist/sweetalert2.min');?>
 
     <?= css('app-prod.min') ?>
 
@@ -84,18 +84,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                       </select>
                     </div>
                   </div>
-                  <div class="col-8">
+                  <div class="col-4">
                     <div class="form-group">
                       <label for="smtp_host">SMTP Host *</label>
                       <input type="text" id="smtp_host" name="smtp_host" placeholder="smtp.domain.com" class="form-control" required="required" />
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="form-group">
+                      <label for="smtp_port">SMTP Port *</label>
+                      <input type="text" id="smtp_port" name="smtp_port" placeholder="Contoh: 587" class="form-control" pattern="[0-9]{2,5}" required="required" />
                     </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-4">
                     <div class="form-group">
-                      <label for="smtp_port">SMTP Port *</label>
-                      <input type="text" id="smtp_port" name="smtp_port" placeholder="Contoh: 587" class="form-control" pattern="[0-9]{2,5}"  required="required" />
+                      <label for="mode_enkripsi">Mode Enkripsi *</label>
+                      <select name="mode_enkripsi" id="mode_enkripsi" class="form-control text-white" required="required">
+                          <option value="tls">TLS</option>
+                          <option value="ssl">SSL</option>
+                      </select>
                     </div>
                   </div>
                   <div class="col-4">

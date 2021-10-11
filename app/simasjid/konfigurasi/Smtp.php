@@ -65,6 +65,15 @@ class Smtp extends SIMASJID_Config {
 				)
 			),
 			array(
+				'field' => 'smtp_crypto',
+				'label' => 'Mode Enkripsi',
+				'rules' => 'required|regex_match[/(tls|ssl)$/]',
+				'errors'=> array(
+					'required' => '{field} harus diisi.',
+					'regex_match'=> '{field} hanya mendukung SSL/TLS.'
+				)
+			),
+			array(
 				'field' => 'smtp_host',
 				'label' => 'SMTP Host',
 				'rules' => 'required|valid_url',
@@ -118,6 +127,7 @@ class Smtp extends SIMASJID_Config {
 			$port 		= $post['smtp_port'];
 			$user 		= $post['smtp_user'];
 			$password 	= $post['smtp_password'];
+			$smtp_crypto= $post['smtp_crypto'];
 
 			$email_cfg = fopen(APPPATH . 'config/email.php', "w");
 
@@ -130,7 +140,7 @@ $config = array(
     \'smtp_port\' => '.$port.',
     \'smtp_user\' => '.'"'.$user.'"'.',
     \'smtp_pass\' => '.'"'.$password.'"'.',
-    \'smtp_crypto\' => \'ssl\',
+    \'smtp_crypto\' => '.'"'.$smtp_crypto.'"'.',
     \'mailtype\' => \'text/plan\',
     \'smtp_timeout\' => \'4\',
     \'charset\' => \'utf-8\',

@@ -677,35 +677,3 @@ $("#pemberitahuan").on('click', ' .notif-list', function(e) {
         }
     });
 });
-
-// var worker = new SharedWorker(baseURI + "/_/js/test.js");
-// worker.port.start();    
-// Notification.requestPermission(function (permission) {
-//   // If the user accepts, let's create a notification
-//   if (permission === "granted") {
-//     worker.port.postMessage({name:"notification"});
-//   }
-// });
-// var w;
-
-// function startWorker() {
-//   if(typeof(Worker) !== "undefined") {
-//     if(typeof(w) == "undefined") {
-//       w = new Worker(baseURI + "/_/js/notification.js");
-//     }
-//     w.onmessage = function(event) {
-//             var dataNotif = [];
-//             $.each(event.data, function(index, value){
-//                 var keterangan = (value.dibaca === '1') ? 'Sudah dibaca' : 'Belum dibaca';
-
-//                 dataNotif.push('<a data-id="'+value.id+'" data-toggle="modal" data-target="#detailNotifModal" class="dropdown-item preview-item notif-list"><div class="preview-thumbnail"><div class="preview-icon bg-dark rounded-circle"><div class="navbar-profile"><img class="img-xs rounded-circle" src="'+baseURI+'/_/uploads/users/'+value.dari+'/'+value.foto+'" alt="'+value.nama_pengirim+'"></div></div></div><div class="preview-item-content float-left"><p class="preview-subject mb-1">'+value.judul+'</p><small class="text-white ellipsis mb-0"> '+value.isi+' </small><hr/><small class="text-white">'+value.datetime+'</small><small class="text-muted ml-2 icon-read">['+keterangan+']</small></div></a><div class="dropdown-divider"></div>');
-                
-//                 $('li #pemberitahuan').html(dataNotif);
-//             });
-//     };
-//   } else {
-//     console.log("Sorry, your browser does not support Web Workers...");
-//   }
-// }
-
-// startWorker();

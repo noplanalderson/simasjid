@@ -604,7 +604,7 @@ function getNotifAlert(){
     });
 }
 
-getNotif();
+// getNotif();
 
 setInterval(function(){
     getNotif()

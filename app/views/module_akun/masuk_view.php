@@ -24,8 +24,13 @@
                         <a href="<?= base_url('lupa-kata-sandi') ?>" class="btn btn-secondary btn-block btn-md pt-2 pb-2 mt-2">Lupa Kata Sandi</a>
                       </div>
                       <div class="col-md-6">
-                        <button type="submit" id="submit" name="masuk" class="btn btn-primary btn-md btn-block pt-2 pb-2 mt-2">Masuk</button>
+                        <button type="submit" id="submit" name="masuk" class="btn btn-primary btn-md btn-block pt-2 pb-2 mt-2"><i class="fas fa-sign-in-alt"></i> Masuk</button>
                       </div> 
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col-md-12">
+                        <a href="<?= base_url('kalkulator-zakat-publik') ?>" class="btn btn-outline-warning btn-block btn-md pt-2 pb-2 mt-2"><i class="fas fa-calculator"></i>Kalkulator Zakat</a>
+                      </div>
                     </div>
                   </div>
                   <div class="text-center mt-3">

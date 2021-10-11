@@ -19,6 +19,10 @@ class Masuk extends SIMASJID_Core {
 
 	public function index()
 	{
+		$this->css_plugin = array(
+			'fontawesome/css/all.min'
+		);
+		
 		$this->_module 	= 'akun/masuk_view';
 		
 		$this->js 		= 'halaman/masuk';

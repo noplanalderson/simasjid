@@ -259,29 +259,29 @@ const Toast = Swal.mixin({
 
 $(".show-btn-password").click(function() {
   var showBtn = $('.show-btn-password');
-  var formPassword = $('#user_password').attr('type');
+  var formPassword = $('#ch_user_password').attr('type');
 
   if(formPassword === "password"){
       showBtn.attr('class', 'input-group-text show-btn-password d-flex hide-btn');
       $('.password').attr('class', 'fa fa-eye-slash password');
-      $('#user_password').attr('type', 'text');
+      $('#ch_user_password').attr('type', 'text');
     }else{
       $('.password').attr('class', 'fa fa-eye password');
-      $('#user_password').attr('type', 'password');
+      $('#ch_user_password').attr('type', 'password');
       showBtn.attr('class', 'input-group-text show-btn-password d-flex');
     }
 });
 
 $(".show-btn-repeat").click(function() {
   var showBtn = $('.show-btn-repeat');
-  var formPassword = $('#repeat_password').attr('type');
+  var formPassword = $('#ch_repeat_password').attr('type');
 
   if(formPassword === "password"){
       showBtn.attr('class', 'input-group-text show-btn-repeat d-flex hide-btn');
       $('.repeat').attr('class', 'fa fa-eye-slash repeat');
-      $('#repeat_password').attr('type', 'text');
+      $('#ch_repeat_password').attr('type', 'text');
     }else{
-      $('#repeat_password').attr('type', 'password');
+      $('#ch_repeat_password').attr('type', 'password');
       $('.repeat').attr('class', 'fa fa-eye repeat');
       showBtn.attr('class', 'input-group-text show-btn-repeat d-flex');
     }
@@ -293,8 +293,8 @@ $("#formGantiPwd").on('submit', function(e) {
 
     var formAction = $("#formGantiPwd").attr('action');
     var dataPassword = {
-        user_password: $("#user_password").val(),
-        repeat_password: $("#repeat_password").val(),
+        user_password: $("#ch_user_password").val(),
+        repeat_password: $("#ch_repeat_password").val(),
         simasjid_token: $('.csrf_token').val()
     };
 
@@ -364,9 +364,9 @@ $(function(){
                 });
             },
             success: function(data){
-                $('#user_name').val(data.user_name);
-                $('#user_email').val(data.user_email);
-                $('#real_name').val(data.real_name);
+                $('#akun_user_name').val(data.user_name);
+                $('#akun_user_email').val(data.user_email);
+                $('#akun_real_name').val(data.real_name);
             }
         });
     });

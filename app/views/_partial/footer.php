@@ -27,9 +27,9 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
                     <?= form_open('akun/ganti-kata-sandi', 'id="formGantiPwd" method="post"');?>
                     <div class="form-group">
-                        <label for="user_password my-2">Kata Sandi *</label>
+                        <label for="ch_user_password my-2">Kata Sandi *</label>
                         <div class="input-group">
-                            <input id="user_password" 
+                            <input id="ch_user_password" 
                                 type="password" 
                                 class="form-control" 
                                 placeholder="********"
@@ -43,9 +43,9 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         <small class="text-danger">Kata sandi harus mengandung huruf besar, kecil, angka, dan simbol minimal 8 karakter.</small>
                     </div>
                     <div class="form-group">
-                        <label for="user_password my-2">Ulangi Kata Sandi *</label>
+                        <label for="ch_repeat_password my-2">Ulangi Kata Sandi *</label>
                         <div class="input-group">
-                            <input id="repeat_password" type="password" class="form-control" placeholder="********" name="repeat_password" autocomplete="off">
+                            <input id="ch_repeat_password" type="password" class="form-control" placeholder="********" name="repeat_password" autocomplete="off">
                             <div class="input-group-prepend">
                                 <span class="input-group-text show-btn-repeat"><i class="fa fa-eye repeat"></i></span>
                             </div>
@@ -75,16 +75,16 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
                     <?= form_open_multipart('akun/update', 'id="formAkun" method="post"');?>
                     <div class="form-group">
-                        <label for="real_name">Nama *</label>
-                        <input id="real_name" type="text" class="form-control" name="real_name" placeholder="Nama" required="required">
+                        <label for="akun_real_name">Nama *</label>
+                        <input id="akun_real_name" type="text" class="form-control" name="real_name" placeholder="Nama" required="required">
                     </div>
                     <div class="form-group">
-                        <label for="user_name">Username *</label>
-                        <input id="user_name" type="text" class="form-control" name="user_name" placeholder="Username (ex: user_name)" required="required">
+                        <label for="akun_user_name">Username *</label>
+                        <input id="akun_user_name" type="text" class="form-control" name="user_name" placeholder="Username (ex: user_name)" required="required">
                     </div>
                     <div class="form-group">
-                        <label for="user_email">Email *</label>
-                        <input id="user_email" type="email"  class="form-control" name="user_email" placeholder="kamu@dimana.domain" required="required">
+                        <label for="akun_user_email">Email *</label>
+                        <input id="akun_user_email" type="email"  class="form-control" name="user_email" placeholder="kamu@dimana.domain" required="required">
                     </div>
                     <div class="form-group">
                         <label>Foto Profil</label>

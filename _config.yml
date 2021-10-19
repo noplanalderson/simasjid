@@ -2,3 +2,6 @@ theme: jekyll-theme-midnight
 title: SIMASJID
 description: Sistem Informasi dan Manajemen Masjid
 show_downloads: true
+github:
+  zip_url: https://github.com/noplanalderson/simasjid/archive/refs/tags/v1.5.0.zip
+  tar_url: https://github.com/noplanalderson/simasjid/archive/refs/tags/v1.5.0.tar.gz

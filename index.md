@@ -1,4 +1,4 @@
-## Petunjuk Instalasi Aplikasi SIMASJID
+## SIMASJID
 
 ![SIMASJID](https://raw.githubusercontent.com/noplanalderson/simasjid/main/_/images/simasjid_logo.png)
 

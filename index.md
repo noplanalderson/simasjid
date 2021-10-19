@@ -1,37 +1,37 @@
-## Welcome to GitHub Pages
+## Petunjuk Instalasi Aplikasi SIMASJID
 
-You can use the [editor on GitHub](https://github.com/noplanalderson/simasjid/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+![SIMASJID](https://raw.githubusercontent.com/noplanalderson/simasjid/main/_/images/simasjid_logo.png)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Sebelum melakukan instalasi, pastikan bahwa server/hosting/PC anda telah memenuhi _system requirements_ sebagai berikut:
 
-### Markdown
+1. Sistem Operasi 64 bit (Linux/Windows/MacOS) 
+2. Mendukung Bahasa Pemrograman PHP Versi >=7.4
+3. Apache atau Nginx Webserver
+4. Database MariaDB versi 10.x
+5. Mendukung _library_ PHP Sodium dan PHP GD
+6. Jika memakai Nginx Webserver, pastika anda menginstal PHP-FPM
+7. atau bisa menggunakan XAMPP
+8. Email yang mendukung SMTP Client ([Silakan baca panduan berikut](https://www.dewaweb.com/blog/cara-setting-smtp-gmail/))
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Prosedur Instalasi Aplikasi SIMASJID
 
-```markdown
-Syntax highlighted code block
+1. Unduh dan simpan folder aplikasi SIMASJID pada root directory webserver anda. Jika menggunakan XAMPP, letakkan folder aplikasi pada `C:\\xampp\htdocs`.
+2. Buat database pada MariaDB atau jika anda menggunakan XAMPP bisa menggunakan phpmyadmin.
+3. Jika folder aplikasi SIMASJID tidak menjadi web root anda, maka pada file `index.php` ubahlah variabel berikut
 
-# Header 1
-## Header 2
-### Header 3
+   ```
+   $webdir = '';
+   ```
+   menjadi
+   
+   ```
+   $webdir = 'nama_folder_simasjid';
+   ```
+   atau biarkan kosong jika web root anda langsung mengarah pada folder aplikasi SIMASJID.
+4. Akses `http://domain.anda/install.php` atau jika masih menggunakan webserver lokal seperti XAMPP, silakan akses `http://localhost/nama_folder/install.php`.
+5. Masukkan nama database yang telah dibuat, user database, dan password database.
+6. Lalu ikuti langkah-langkah konfigurasi selanjutnya.
 
-- Bulleted
-- List
+### Kontak dan Dukungan
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/noplanalderson/simasjid/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Jika mengalami kesulitan dalam proses instalasi, atau menemukan bug dan celah keamanan, silakan kirimkan email beserta _screenshoot_ ke email [berikut](mailto:mrnaeem@tutanota.com).

@@ -48,19 +48,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
 |--------------------------------------------------------------------------
-| Nonce Generator
-|--------------------------------------------------------------------------
-|
-| Nonce (Random Pseudo Bytes) encoded by base64 used for inline scripting
-| and Register it to CSP Header.
-|
-|
-*/
-$nonce = rtrim(strtr(base64_encode(openssl_random_pseudo_bytes(64)), '+/', '-_'), '=');
-defined('NONCE') OR define('NONCE', $nonce);
-
-/*
-|--------------------------------------------------------------------------
 | HTTP Header Report-To
 |--------------------------------------------------------------------------
 |
@@ -144,9 +131,9 @@ $config['report']['report_uri'] = '';
 |
 |
 */
-$config['request']['block_all_mixed_content'] 	= true;
+$config['request']['block_all_mixed_content'] 	= false;
 
-$config['request']['upgrade_insecure_requests'] = true;
+$config['request']['upgrade_insecure_requests'] = false;
 
 $config['default']['base_uri'] = array(
 	'source'=> ["'self'"]

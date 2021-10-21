@@ -232,9 +232,10 @@ switch (ENVIRONMENT)
 	// Konfigurasi web direktori
 	// Jika anda menggunakan xampp, sesuaikan isi variabel webdir dengan nama direktori aplikasi simasjid anda
 	// Jika anda mengarahkan webroot ke aplikasi ini, maka kosongkan variabel ini.
-	$webdir   = '';
+	// Awali dengan slash (/). Contoh '/simasjid'
+	$webdir   = '/simasjid';
 
-	define('BASE_URL', $protocol . $_SERVER['SERVER_NAME'] . '/' . $webdir);
+	define('BASE_URL', $protocol . $_SERVER['SERVER_NAME'] . $webdir);
 	
 	// The name of THIS file
 	define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
@@ -317,6 +318,18 @@ switch (ENVIRONMENT)
 	}
 
 	define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);
+/*
+|--------------------------------------------------------------------------
+| Nonce Generator
+|--------------------------------------------------------------------------
+|
+| Nonce (Random Pseudo Bytes) encoded by base64 used for inline scripting
+| and Register it to CSP Header.
+|
+|
+*/
+$nonce = rtrim(strtr(base64_encode(openssl_random_pseudo_bytes(64)), '+/', '-_'), '=');
+defined('NONCE') OR define('NONCE', $nonce);
 
 /*
  * --------------------------------------------------------------------

@@ -26,6 +26,7 @@ define('ERR_HOST', 'DB Host tidak valid. Karakter yang diizinkan hanya alfanumer
 define('ERR_USER', 'DB User tidak valid. Karakter yang diizinkan hanya alfanumerik dan underscore.');
 define('ERR_DB_NAME', 'Nama DB tidak valid. Karakter yang diizinkan hanya alfanumerik dan underscore.');
 define('ERR_TABLE', 'Gagal Membuat table SQL');
+define('ERR_FILE_CFG', 'Gagal Membuat File Konfigurasi Database');
 define('INSTALL_SUCCESS', 'Proses Instalasi Berhasil. Mengalihkan ke halaman konfigurasi...');
 
 $protocol = (isset($_SERVER['HTTPS']) && 
@@ -33,7 +34,7 @@ $protocol = (isset($_SERVER['HTTPS']) &&
 			isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && 
 			$_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') ? 'https://' : 'http://';
 $location = explode(DIRECTORY_SEPARATOR, dirname(__FILE__));
-$location = $protocol.$_SERVER['HTTP_HOST'].'/'.end($location);
+$location = $protocol . $_SERVER['SERVER_NAME'] . '/' . end($location);
 
 function checkDB()
 {
@@ -220,7 +221,8 @@ class App_installer
 
 	private function _createCfgFile()
 	{
-		$database_cfg = fopen(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'database.php', "w");
+		$db_file  		= dirname(__FILE__) . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'database.php';
+		$database_cfg 	= fopen($db_file, "w");
 
 $txt = '<?php
 defined(\'BASEPATH\') OR exit(\'No direct script access allowed\');
@@ -249,8 +251,13 @@ $db[\'default\'] = array(
 	\'failover\' => array(),
 	\'save_queries\' => TRUE
 );';
-		fwrite($database_cfg, $txt);
-		fclose($database_cfg);
+	
+		if(is_writable($db_file))
+		{
+			fwrite($database_cfg, $txt);
+			fclose($database_cfg);
+			return true;
+		}
 	}
 
 	public function doInstall()
@@ -259,11 +266,17 @@ $db[\'default\'] = array(
 		{
 			if($this->_useDB())
 			{
-				if($this->_createTables() !== false)
+				if($this->_createCfgFile() == true) 
 				{
-					$this->_createCfgFile();
-					$this->message = INSTALL_SUCCESS;
-					return true;
+					if($this->_createTables() !== false)
+					{
+						$this->message = INSTALL_SUCCESS;
+						return true;
+					}
+				}
+				else
+				{
+					$this->message = ERR_FILE_CFG;
 				}
 			}
 			else
@@ -322,7 +335,7 @@ else
     <link href="_/css/style.min.css" rel="stylesheet">
     <link href="_/css/app-prod.min.css" rel="stylesheet">
 
-    <link href="https://unpkg.com/sweetalert2@7.24.1/dist/sweetalert2.css" rel="stylesheet">
+    <link href="_/vendors/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
 </head>
 
 <body class="install-bg">
@@ -357,7 +370,7 @@ else
 								    	<label>Database User *</label>
 										<input type="text" id="db_user" name="db_user" placeholder="DB User" class="form-control" required="required"/>
 
-								    	<label>Database Password *</label>
+								    	<label>Database Password</label>
 										<input type="password" id="db_passwd" name="db_passwd" placeholder="DB Password" class="form-control" />
 
 								    	<label>Database Name *</label>
@@ -379,7 +392,7 @@ else
     </div>
     <!-- Bootstrap core JavaScript-->
     <script src="_/js/core.min.js"></script>
-    <script src="https://unpkg.com/sweetalert2@7.24.1/dist/sweetalert2.js"></script>
+    <script src="_/vendors/sweetalert2/dist/sweetalert2.min.js"></script>
 
     <script>
     $("#db_config").on('submit', function() {

@@ -546,6 +546,36 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+/*
+|--------------------------------------------------------------------------
+| Content Security Policy Configuration
+|--------------------------------------------------------------------------
+|
+| This file contains CSP configuration for CSP Library.
+| The HTTP Content-Security-Policy response header allows web site administrators 
+| to control resources the user agent is allowed to load for a given page. 
+| With a few exceptions, policies mostly involve specifying server origins and script endpoints. 
+| This helps guard against cross-site scripting attacks (Cross-site_scripting).
+| 
+| For more information and guides, please visit this links below:
+|
+| 	- https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
+| 	- https://content-security-policy.com/
+| 	- https://scotthelme.co.uk/content-security-policy-an-introduction/
+| 	- https://scotthelme.co.uk/csp-cheat-sheet/
+|
+| Set to true to activate CSP Header
+*/
+$config['csp_header'] = false;
+
+/*
+|--------------------------------------------------------------------------
+| Content Security Policy Configuration
+|--------------------------------------------------------------------------
+|
+| Autoload the core class of application
+|
+*/
 spl_autoload_register(function($class) {
     if (file_exists(APPPATH."core/".$class.'.php')) {
         include_once(APPPATH."core/".$class.'.php');

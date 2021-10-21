@@ -25,7 +25,7 @@ Sebelum melakukan instalasi, pastikan bahwa server/hosting/PC anda telah memenuh
    menjadi
    
    ```
-   $webdir = 'nama_folder_simasjid';
+   $webdir = '/nama_folder_simasjid';
    ```
    atau biarkan kosong jika web root anda langsung mengarah pada folder aplikasi SIMASJID.
 4. Akses `http://domain.anda/install.php` atau jika masih menggunakan webserver lokal seperti XAMPP, silakan akses `http://localhost/nama_folder/install.php`.

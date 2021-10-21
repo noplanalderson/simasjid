@@ -224,8 +224,11 @@ class SIMASJID_Core extends CI_Controller
 		$this->load->library('access_control');
 		$this->access_control->initialize($this->_access);
 
-		$this->load->library('CSP_Header');
-		$this->csp_header->generateCSP();
+		if(config_item('csp_header'))
+		{
+			$this->load->library('CSP_Header');
+			$this->csp_header->generateCSP();
+		}
 	}
 
 	protected function _partial($data)

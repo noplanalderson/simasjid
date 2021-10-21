@@ -166,8 +166,11 @@ class SIMASJID_Config extends CI_Controller
 		// Save Loaded App Configuration to cache
 		$this->app 	= $this->app_m->getAppSetting();
 
-		$this->load->library('CSP_Header');
-		$this->csp_header->generateCSP();
+		if(config_item('csp_header'))
+		{
+			$this->load->library('CSP_Header');
+			$this->csp_header->generateCSP();
+		}
 	}
 
 	protected function _partial($data)

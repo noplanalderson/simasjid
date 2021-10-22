@@ -87,7 +87,8 @@ class Manajemen_user extends SIMASJID_Core {
 					'user_email' => strtolower($post['user_email']),
 					'id_jabatan' => $post['id_jabatan'],
 					'user_token' => base64url_encode(openssl_random_pseudo_bytes(64)),
-					'user_picture' => 'user.jpg'
+					'user_picture' => 'user.jpg',
+					'is_active' => $post['is_active']
 				);
 
 				$user = $this->user_m->tambahUser($userSetting);

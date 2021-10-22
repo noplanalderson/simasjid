@@ -198,7 +198,7 @@ class Masjid extends SIMASJID_Config {
 			}
 			else
 			{
-				$icon_simasjid = 'mosque-icon.png';
+				$icon_masjid = 'mosque-icon.png';
 			}
 
 			$settings = array_replace($setting, array('logo_masjid' => $logo_masjid, 'icon_masjid' => $icon_masjid));

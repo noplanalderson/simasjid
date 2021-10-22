@@ -276,12 +276,12 @@ class CI_Security {
 			$this->_csrf_cookie_name, 
 			$this->_csrf_hash, 
 				array(
-					'samesite' => 'None', 
-					'secure' => true,
+					'samesite' => config_item('cookie_samesite'), 
+					'secure' => config_item('cookie_secure'),
 					'expires' => $expire, 
 					'path' => config_item('cookie_path'), 
 					'domain' => config_item('cookie_domain'), 
-					'httponly' => config_item('cookie_httponly')
+					'httponly' => TRUE // Not configureable for security reason
 				)
 		);
 		log_message('info', 'CSRF cookie sent');

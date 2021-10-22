@@ -173,7 +173,7 @@ class CI_Session {
 				$this->_config['cookie_name'], 
 				session_id(), 
 				array(
-					'samesite' => 'None', 
+					'samesite' => config_item('cookie_samesite'), 
 					'secure' => $this->_config['cookie_secure'],
 					'expires' => (empty($this->_config['cookie_lifetime']) ? 0 : time() + $this->_config['cookie_lifetime']), 
 					'path' => $this->_config['cookie_path'], 

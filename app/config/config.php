@@ -3,17 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
 |--------------------------------------------------------------------------
-| Cookie setting
-|--------------------------------------------------------------------------
-|
-| Set default cookie configuration to samesite and secure
-| Avtivate if you are in secure http connection only
-*/
-//ini_set('session.cookie_samesite', 'None');
-//ini_set('session.cookie_secure', FALSE);
-
-/*
-|--------------------------------------------------------------------------
 | Base Site URL
 |--------------------------------------------------------------------------
 |
@@ -429,6 +418,47 @@ $config['cookie_domain']    = '';
 $config['cookie_path']      = '/';
 $config['cookie_secure']    = FALSE;
 $config['cookie_httponly']  = TRUE;
+
+/*
+|--------------------------------------------------------------------------
+| Cookie Samesite Setting
+|--------------------------------------------------------------------------
+|
+| The SameSite attribute of the Set-Cookie HTTP response header 
+| allows you to declare if your cookie should be restricted to a first-party 
+| or same-site context.
+|
+| Note: Standards related to the Cookie SameSite attribute recently changed such that:
+|
+| The cookie-sending behavior if SameSite is not specified is SameSite=Lax. 
+| Previously the default was that cookies were sent for all requests.
+| Cookies with SameSite=None must now also specify the Secure attribute 
+| (they require a secure context/HTTPS).
+|
+|
+| The SameSite attribute accepts three values:
+| 
+| Lax
+| 
+| Cookies are not sent on normal cross-site subrequests 
+| (for example to load images or frames into a third party site), 
+| but are sent when a user is navigating to the origin site (i.e., when following a link).
+| This is the default cookie value if SameSite has not been explicitly specified in 
+| recent browser versions (see the "SameSite: Defaults to Lax" feature in the Browser Compatibility).
+|
+| Strict
+|
+| Cookies will only be sent in a first-party context and not be sent 
+| along with requests initiated by third party websites.
+|
+| None
+|
+| Cookies will be sent in all contexts, i.e. in responses to both 
+| first-party and cross-origin requests. If SameSite=None is set, 
+| the cookie Secure attribute must also be set (or the cookie will be blocked).
+|
+*/
+$config['cookie_samesite']	= 'Lax';
 
 /*
 |--------------------------------------------------------------------------

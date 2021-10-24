@@ -81,7 +81,7 @@ $('#formCari').on('submit', function(e){
 			    
 			    var tglIndo = new Date(dokumentasi[i].tanggal).toLocaleDateString('id-ID', options);  
             	
-            	image += '<a data-lg-size="1600-1067" data-pinterest-text="'+dokumentasi[i].judul_kegiatan+'" data-tweet-text="'+dokumentasi[i].judul_kegiatan+'" class="gallery-item" data-src="'+baseURI+'/_/uploads/dokumentasi/'+tgl[0]+'/'+tgl[1]+'/'+dokumentasi[i].file_dokumentasi+'" data-sub-html="<h5>'+dokumentasi[i].judul_kegiatan+'</h5><small>'+dokumentasi[i].keterangan+' - '+tglIndo+'</small>">';
+            	image += '<a data-lg-size="1600-1067" data-pinterest-text="'+dokumentasi[i].judul_kegiatan+'" data-tweet-text="'+dokumentasi[i].judul_kegiatan+'" class="gallery-item jg-entry-visible" data-src="'+baseURI+'/_/uploads/dokumentasi/'+tgl[0]+'/'+tgl[1]+'/'+dokumentasi[i].file_dokumentasi+'" data-sub-html="<h5>'+dokumentasi[i].judul_kegiatan+'</h5><small>'+dokumentasi[i].keterangan+' - '+tglIndo+'</small>">';
             	image += '<img class="img-responsive" src="'+baseURI+'/_/uploads/dokumentasi/'+tgl[0]+'/'+tgl[1]+'/thumbnail/'+dokumentasi[i].file_dokumentasi+'" />';
             	image += '</a>';
             }
@@ -92,12 +92,7 @@ $('#formCari').on('submit', function(e){
             
             $('#animated-thumbnails-gallery').html(image);
 
-			$("#animated-thumbnails-gallery").justifiedGallery({
-			    captions: true,
-			    lastRow: "hide",
-			    rowHeight: 180,
-			    margins: 5
-			  }).on("jg.complete", function () {
+			$(function () {
 				window.lightGallery( document.getElementById("animated-thumbnails-gallery"), {
 					autoplayFirstVideo: false,
 					pager: false,
@@ -110,7 +105,9 @@ $('#formCari').on('submit', function(e){
 						rotate: true
 					}
 				});
+                // $("#animated-thumbnails-gallery a").addClass('gallery-item jg-entry jg-entry-visible');
 			});
+
         }
     })
 })

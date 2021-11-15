@@ -272,18 +272,32 @@ class CI_Security {
 			return FALSE;
 		}
 
-		setcookie(
-			$this->_csrf_cookie_name, 
-			$this->_csrf_hash, 
-				array(
-					'samesite' => config_item('cookie_samesite'), 
-					'secure' => config_item('cookie_secure'),
-					'expires' => $expire, 
-					'path' => config_item('cookie_path'), 
-					'domain' => config_item('cookie_domain'), 
-					'httponly' => TRUE // Not configureable for security reason
-				)
-		);
+		if (version_compare(PHP_VERSION, '7.3', '>='))
+		{
+			setcookie(
+				$this->_csrf_cookie_name, 
+				$this->_csrf_hash, 
+					array(
+						'samesite' => config_item('cookie_samesite'), 
+						'secure' => config_item('cookie_secure'),
+						'expires' => $expire, 
+						'path' => config_item('cookie_path'), 
+						'domain' => config_item('cookie_domain'), 
+						'httponly' => TRUE // Not configureable for security reason
+					)
+			);
+		
+		} else {
+			setcookie(
+				$this->_csrf_cookie_name, 
+				$this->_csrf_hash, 
+				$expire, 
+				config_item('cookie_path'), 
+				config_item('cookie_domain'), 
+				config_item('cookie_secure'),
+				TRUE // Not configureable for security reason
+			);
+		}
 		log_message('info', 'CSRF cookie sent');
 
 		return $this;

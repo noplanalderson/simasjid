@@ -160,27 +160,31 @@ class CI_Session {
 		// unless it is being currently created or regenerated
 		elseif (isset($_COOKIE[$this->_config['cookie_name']]) && $_COOKIE[$this->_config['cookie_name']] === session_id())
 		{
-			// setcookie(
-			// 	$this->_config['cookie_name'],
-			// 	session_id(),
-			// 	(empty($this->_config['cookie_lifetime']) ? 0 : time() + $this->_config['cookie_lifetime']),
-			// 	$this->_config['cookie_path'],
-			// 	$this->_config['cookie_domain'],
-			// 	$this->_config['cookie_secure'],
-			// 	TRUE
-			// );
-			setcookie(
-				$this->_config['cookie_name'], 
-				session_id(), 
-				array(
-					'samesite' => config_item('cookie_samesite'), 
-					'secure' => $this->_config['cookie_secure'],
-					'expires' => (empty($this->_config['cookie_lifetime']) ? 0 : time() + $this->_config['cookie_lifetime']), 
-					'path' => $this->_config['cookie_path'], 
-					'domain' => $this->_config['cookie_domain'], 
-					'httponly' => TRUE
-				)
-			);
+			if (version_compare(PHP_VERSION, '7.3', '<='))
+			{
+				setcookie(
+					$this->_config['cookie_name'],
+					session_id(),
+					(empty($this->_config['cookie_lifetime']) ? 0 : time() + $this->_config['cookie_lifetime']),
+					$this->_config['cookie_path'],
+					$this->_config['cookie_domain'],
+					$this->_config['cookie_secure'],
+					TRUE
+				);
+			} else {
+				setcookie(
+					$this->_config['cookie_name'], 
+					session_id(), 
+					array(
+						'samesite' => config_item('cookie_samesite'), 
+						'secure' => $this->_config['cookie_secure'],
+						'expires' => (empty($this->_config['cookie_lifetime']) ? 0 : time() + $this->_config['cookie_lifetime']), 
+						'path' => $this->_config['cookie_path'], 
+						'domain' => $this->_config['cookie_domain'], 
+						'httponly' => TRUE
+					)
+				);
+			}
 		}
 
 		$this->_ci_init_vars();

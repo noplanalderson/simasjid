@@ -203,7 +203,7 @@ class Pengaturan_masjid extends SIMASJID_Core {
 			}
 			else
 			{
-				$icon_app = $this->app->icon_masjid;
+				$icon_masjid = $this->app->icon_masjid;
 			}
 
 			$settings = array_replace($setting, array('logo_masjid' => $logo_masjid, 'icon_masjid' => $icon_masjid));

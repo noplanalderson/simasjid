@@ -208,7 +208,7 @@ class Pengaturan_masjid extends SIMASJID_Core {
 
 			$settings = array_replace($setting, array('logo_masjid' => $logo_masjid, 'icon_masjid' => $icon_masjid));
 
-			$status = ($this->app_m->updateSetting($settings) === true) ? 1 : 0;
+			$status = ($this->app_m->updateSettings($settings) === true) ? 1 : 0;
 			$msg 	= ($status === 1) ? 'Pengaturan berhasil diubah.' : 'Gagal mengubah pengaturan.';
 
 			if($status === 1) $this->cache->delete('simasjid_setting');

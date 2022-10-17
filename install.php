@@ -421,7 +421,7 @@ else
 	                
 	                if (data.result == 1) {
 	                    Swal.fire('Berhasil!', data.msg, 'success');
-	                    setTimeout(function () { window.location.href = "<?= $location.'/konfigurasi';?>";}, 3000);
+	                    setTimeout(function () { window.location.href = "<?= $location.'/konfigurasi-masjid';?>";}, 3000);
 	                } else {
 	                    Swal.fire('Gagal!', data.msg, 'error');
 	                }

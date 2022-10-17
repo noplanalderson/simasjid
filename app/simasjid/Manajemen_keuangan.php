@@ -257,24 +257,26 @@ class Manajemen_keuangan extends SIMASJID_Core {
 			{
 				// Get Image(s) Data
 				$dokumentasi = $this->secure_upload->data();
-
-				$data = array(
-					'kode_transaksi' => strtoupper(random_char(5)).time(),
-					'id_kategori' => $post['id_kategori'],
-					'user_id' => $this->session->userdata('uid'),
-					'keterangan' => $post['keterangan'],
-					'date' => $post['date'],
-					'pemasukan' => $post['pemasukan'],
-					'dokumentasi' => $dokumentasi['file_name']
-				);
-
-				$status = ($this->keuangan_m->inputDataKas($data) == true) ? 1 : 0;
-				$msg 	= ($status === 1) ? 'Data berhasil ditambahkan.' : 'Data gagal ditambahkan.';
+				$dokumentasi = $dokumentasi['file_name'];
 			}
 			else
 			{
 				$msg = $this->secure_upload->show_errors();
+				$dokumentasi = '';
 			}
+
+			$data = array(
+				'kode_transaksi' => strtoupper(random_char(5)).time(),
+				'id_kategori' => $post['id_kategori'],
+				'user_id' => $this->session->userdata('uid'),
+				'keterangan' => $post['keterangan'],
+				'date' => $post['date'],
+				'pemasukan' => $post['pemasukan'],
+				'dokumentasi' => $dokumentasi
+			);
+
+			$status = ($this->keuangan_m->inputDataKas($data) == true) ? 1 : 0;
+			$msg 	= ($status === 1) ? 'Data berhasil ditambahkan.' : 'Data gagal ditambahkan.';
 		} 
 		else 
 		{
@@ -355,24 +357,26 @@ class Manajemen_keuangan extends SIMASJID_Core {
 			{
 				// Get Image(s) Data
 				$dokumentasi = $this->secure_upload->data();
-
-				$data = array(
-					'kode_transaksi' => strtoupper(random_char(5)).time(),
-					'id_kategori' => $post['id_kategori'],
-					'user_id' => $this->session->userdata('uid'),
-					'keterangan' => $post['keterangan'],
-					'date' => $post['date'],
-					'pengeluaran' => $post['pengeluaran'],
-					'dokumentasi' => $dokumentasi['file_name']
-				);
-
-				$status = ($this->keuangan_m->inputDataKas($data) == true) ? 1 : 0;
-				$msg 	= ($status === 1) ? 'Data berhasil ditambahkan.' : 'Data gagal ditambahkan.';
+				$dokumentasi = $dokumentasi['file_name'];
 			}
 			else
 			{
 				$msg = $this->secure_upload->show_errors();
+				$dokumentasi = '';
 			}
+
+			$data = array(
+				'kode_transaksi' => strtoupper(random_char(5)).time(),
+				'id_kategori' => $post['id_kategori'],
+				'user_id' => $this->session->userdata('uid'),
+				'keterangan' => $post['keterangan'],
+				'date' => $post['date'],
+				'pengeluaran' => $post['pengeluaran'],
+				'dokumentasi' => $dokumentasi
+			);
+
+			$status = ($this->keuangan_m->inputDataKas($data) == true) ? 1 : 0;
+			$msg 	= ($status === 1) ? 'Data berhasil ditambahkan.' : 'Data gagal ditambahkan.';
 		} 
 		else 
 		{

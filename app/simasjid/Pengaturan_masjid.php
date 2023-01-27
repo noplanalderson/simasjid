@@ -152,6 +152,10 @@ class Pengaturan_masjid extends SIMASJID_Core {
 					$data_logo 	 = $this->secure_upload->data();
 					$logo_masjid = $data_logo['file_name'];
 				}
+				else
+				{
+					$logo_masjid = $this->app->logo_masjid;
+				}
 			}
 			else
 			{
@@ -199,6 +203,10 @@ class Pengaturan_masjid extends SIMASJID_Core {
 					// Get Image(s) Data
 					$data_icon 	 = $this->secure_upload->data();
 					$icon_masjid = $data_icon['file_name'];
+				}
+				else
+				{
+					$icon_masjid = $this->app->icon_masjid;
 				}
 			}
 			else

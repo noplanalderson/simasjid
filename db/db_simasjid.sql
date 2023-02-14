@@ -46,7 +46,7 @@ CREATE TABLE `tb_inventaris` (
   `id_barang` int(11) NOT NULL,
   `kode_barang` char(15) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `tgl_pendataan` date DEFAULT current_timestamp(),
+  `tgl_pendataan` date NOT NULL,
   `nama_barang` varchar(255) NOT NULL,
   `kuantitas_masuk` float DEFAULT NULL,
   `kuantitas_keluar` float DEFAULT NULL,
@@ -122,7 +122,7 @@ CREATE TABLE `tb_kas_masjid` (
   `id_kategori` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `keterangan` varchar(255) NOT NULL,
-  `date` date DEFAULT current_timestamp(),
+  `date` date NOT NULL,
   `pemasukan` float(12,2) UNSIGNED DEFAULT NULL,
   `pengeluaran` float(12,2) UNSIGNED DEFAULT NULL,
   `dokumentasi` varchar(255) NOT NULL

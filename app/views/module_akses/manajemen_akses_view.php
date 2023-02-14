@@ -58,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
           </div>
 
       <div class="modal fade" id="accessModal" tabindex="-1" role="dialog" aria-labelledby="Access Management" aria-hidden="true">
-        <div class="modal-dialog modal-md" role="document">
+        <div class="modal-dialog modal-xl" role="document">
           <div class="modal-content bg-dark text-white">
             <div class="modal-header">
                 <h5 class="modal-title" id="accessAction"></h5>
